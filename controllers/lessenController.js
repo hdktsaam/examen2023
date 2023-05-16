@@ -2,11 +2,11 @@ const db = require("../databank");
 
 const getLessen = (req, res) => {
   db.all(
-    "Select * from lessen where user_id = ?",
+    "select * from user u join lessen l on u.user_id = l.user_id where l.user_id = ?",
     [req.params.id],
     (err, rows) => {
       if (err) return res.json({ message: err.message });
-      res.json({ data: rows });
+      res.json({ user_id: req.params.id, lessen: rows });
     }
   );
 };
