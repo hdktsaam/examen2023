@@ -3,7 +3,7 @@ const db = require("../databank");
 const getUsers = (req, res) => {
   db.all("Select * from user", [], (err, rows) => {
     if (err) return res.json({ message: err.message });
-    res.json({ data: rows });
+    res.json({ OK: "gelukt", users: rows });
   });
 };
 
